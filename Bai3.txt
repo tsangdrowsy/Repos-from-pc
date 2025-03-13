@@ -1,0 +1,8 @@
+﻿Build started at 2:34 PM...
+1>------ Build started: Project: test1, Configuration: Debug x64 ------
+1>test1.cpp
+1>C:\Users\Admin\source\repos\test1\test1\test1.cpp(138,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+1>test1.vcxproj -> C:\Users\Admin\source\repos\test1\x64\Debug\test1.exe
+1>Done building project "test1.vcxproj".
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Build completed at 2:34 PM and took 02.701 seconds ==========
