@@ -48,7 +48,6 @@ void showlist(Node* pHead)
             cout << "Dia chi: " << p->info.diaChi << endl;
             cout << "Lop: " << p->info.lop << endl;
             cout << "Khoa: " << p->info.khoa << endl;
-            cout << "-------------------------" << endl;
         }
     }
 }
@@ -104,16 +103,6 @@ void insertOrder(Node*& pHead, const sinhvien& sv)
     }
 }
 
-void clearList(Node*& pHead)
-{
-    Node* p;
-    while (pHead != NULL)
-    {
-        p = pHead;
-        pHead = pHead->next;
-        delete p;
-    }
-}
 
 int sosanhHoten(const sinhvien& Hoten1, const sinhvien& Hoten2)
 {
@@ -234,7 +223,7 @@ void test1()
     cout << "\nDanh sach sinh vien sau khi xoa 'Nguyen Van Cu':\n" << endl;
     showlist(pHead);
 
-    // Thêm sinh viên mới
+  
     sinhvien svMoi = { "Tran Thi Mo", "25 Hong Bang", "TT0901", 2009 };
     insertOrder(pHead, svMoi);
     cout << "\nDanh sach sinh vien sau khi them 'Tran Thi Mo':\n" << endl;
