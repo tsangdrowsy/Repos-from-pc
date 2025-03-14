@@ -207,11 +207,6 @@ void test3() {
 	printf("\n");
 	q = find(pHead, 1);
 	if (q == NULL)
-		printf("khong tim thay \n");
-	else
-		printf("Tim thay gia tri%d\n", q->info);
-	q = find(pHead, 1);
-	if (q == NULL)
 	{
 		printf("Khong tim that\n");
 	}
