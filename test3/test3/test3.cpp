@@ -145,7 +145,8 @@ void AddList(Node*& pHead1, Node* pHead2) {
     }
 }
 
-int main() {
+void test3()
+{
     Node* list1 = NULL;
     Node* list2 = NULL;
 
@@ -187,5 +188,10 @@ int main() {
     cout << "Danh sach thu nhat sau khi them danh sach thu hai: ";
     ShowList(list1);
 
-    return 0;
+   
+}
+int main()
+{
+	test3();
+	return 0;
 }
