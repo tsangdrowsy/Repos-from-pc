@@ -5,7 +5,6 @@
 #include <ctype.h>
 #include <math.h>
 
-// ====================== PH?N 1: CÀI ??T STACK ======================
 
 // 1.1 Stack b?ng m?ng
 typedef struct {
@@ -55,8 +54,6 @@ int PeekStack(StackInt s) {
 void ClearStack(StackInt* s) {
     s->top = -1;
 }
-
-// 1.2 Stack b?ng danh sách liên k?t
 typedef struct Node {
     int data;
     struct Node* next;
@@ -106,8 +103,6 @@ void ClearLinkedStack(LinkedStackInt* s) {
         PopLinkedStack(s);
     }
 }
-
-// ====================== PH?N 2: CÁC ?NG D?NG ======================
 
 // 2.1 ??o ng??c s? dùng stack
 int DaoNguocSo(int num) {
@@ -229,7 +224,7 @@ void InfixToPostfix(const char* infix, char* postfix) {
             while (s.top != -1 && PeekStackChar(s) != '(') {
                 postfix[j++] = PopStackChar(&s);
             }
-            PopStackChar(&s); // L?y '(' ra
+            PopStackChar(&s); 
         }
         else {
             while (s.top != -1 && DoUuTien(c) <= DoUuTien(PeekStackChar(s))) {
