@@ -131,12 +131,12 @@ void ClearLinkedQueue(LinkedQueueInt* q) {
     }
 }
 
-// ====================== PHẦN 2: CÁC ỨNG DỤNG ======================
+
 
 // 2.1 Xếp lịch cặp múa nam/nữ
 typedef struct {
     char name[50];
-    char gender; // 'M' hoặc 'F'
+    char gender;
 } Dancer;
 
 void ScheduleDancingPairs(Dancer dancers[], int n) {
@@ -260,10 +260,10 @@ printf("%d ", a[i]);
  printf("\n");
 free(a);
                 
-           }
+}
 int main()
-           {
-			   test1();
-			   test2();
-               return 0;
+{
+test1();
+test2();
+return 0;
 }
