@@ -221,24 +221,24 @@ void RadixSort(int arr[], int n) {
     }
 }
  
-    void test1()
-            {
-    int n;
-    printf("Nhap so vu cong: ");
-    scanf("%d", &n);
+void test1()
+    {
+int n;
+printf("Nhap so vu cong: ");
+scanf("%d", &n);
 
-    Dancer* dancers = (Dancer*)malloc(n * sizeof(Dancer));
-    for (int i = 0; i < n; i++) {
-    printf("Nhap ten vu cong %d: ", i + 1);
-    scanf("%s", dancers[i].name);
-    printf("Nhap gioi tinh (M/F): ");
-    scanf(" %c", &dancers[i].gender);
-    }
+Dancer* dancers = (Dancer*)malloc(n * sizeof(Dancer));
+for (int i = 0; i < n; i++) {
+printf("Nhap ten vu cong %d: ", i + 1);
+scanf("%s", dancers[i].name);
+printf("Nhap gioi tinh (M/F): ");
+scanf(" %c", &dancers[i].gender);
+}
 
-        ScheduleDancingPairs(dancers, n);
-        free(dancers);
+ScheduleDancingPairs(dancers, n);
+free(dancers);
                
-        }
+}
 void test2()
 {
  int n;
