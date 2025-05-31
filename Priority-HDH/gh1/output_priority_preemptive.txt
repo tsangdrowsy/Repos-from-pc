@@ -1,0 +1,2 @@
+Ket qua dieu phoi FCFS:
+ID	Burst	Arrival	Waiting	Turnaround

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8bc48a2c-a6cf-40d9-8655-7038aeb889d2}</ProjectGuid>
-    <RootNamespace>gh1</RootNamespace>
+    <ProjectGuid>{b7dd11f3-ba6b-403d-9793-8c30c40c9304}</ProjectGuid>
+    <RootNamespace>FCFSHDH</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="gh1.cpp" />
+    <ClCompile Include="FCFS-HDH.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Input.txt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
