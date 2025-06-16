@@ -1,106 +1,128 @@
 ﻿#include <iostream>
-#include <cmath>
-#include <vector>
+#include <fstream>
 using namespace std;
 
-// Hàm nhập mảng 2 chiều
-void NhapMang(int a[][100], int x, int y) {
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            cout << "Nhap phan tu A[" << i << "][" << j << "]: ";
-            cin >> a[i][j];
-        }
-    }
-}
-
-// Hàm kiểm tra số chính phương
-bool SCP(int so) {
-    int canso = (int)sqrt(so);
-    return (canso * canso == so);
-}
-
-// Hàm tính tổng số chính phương
-int TongCP(int a[][100], int x, int y) {
-    int ketqua = 0;
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            if (SCP(a[i][j])) {
-                ketqua = ketqua + a[i][j];
-            }
-        }
-    }
-    return ketqua;
-}
-
-// Hàm tìm giá trị nhỏ nhất mỗi cột
-vector<int> GTNhoNhatMoiCot(int a[][100], int x, int y) {
-    vector<int> GTNN(y, INT_MAX);
-    for (int i = 0; i < y; i++) {
-        for (int j = 0; j < x; j++) {
-            if (a[j][i] < GTNN[i]) {
-                GTNN[i] = a[j][i];
-            }
-        }
-    }
-    return GTNN;
-}
-
-// Hàm tính tổng các giá trị trên cột thứ n
-int TongCotN(int a[][100], int x, int n) {
-    int kq = 0;
-    for (int hang = 0; hang < x; hang++) {
-        kq = kq + a[hang][n];
-    }
-    return kq;
-}
-
-// Hàm tìm GTLN trong số GTNN của mỗi cột
-int GTLNtrongcacGTNNmoicot(const vector<int>& GTNN) {
-    int GTLN = INT_MIN;
-    for (int GT : GTNN) {
-        if (GT > GTLN) {
-            GTLN = GT;
-        }
-    }
-    return GTLN;
-}
+const int MAX_PROCESS = 10;
+const int MAX_RESOURCE = 10;
 
 int main() {
-    int x, y;
-    cout << "Nhap so dong x: ";
-    cin >> x;
-    cout << "Nhap so cot y: ";
-    cin >> y;
-    int a[100][100];
-    NhapMang(a, x, y);
+    int n, m;
+    int available[MAX_RESOURCE];
+    int max[MAX_PROCESS][MAX_RESOURCE];
+    int allocation[MAX_PROCESS][MAX_RESOURCE];
+    int need[MAX_PROCESS][MAX_RESOURCE];
+    bool finish[MAX_PROCESS] = { false };
+    int safeSequence[MAX_PROCESS];
+    int work[MAX_RESOURCE];
+    int workHistory[MAX_PROCESS + 1][MAX_RESOURCE]; // Lưu lịch sử work
 
-    // Câu a
-    int tong = TongCP(a, x, y);
-    cout << "Tong cac so CP la: " << tong << endl;
-
-    // Câu b
-    vector<int> GTNN = GTNhoNhatMoiCot(a, x, y);
-    cout << "GTNN cua moi cot: ";
-    for (int GT : GTNN) {
-        cout << GT << " ";
+    // Mở file input
+    ifstream inputFile("TextFile2.txt");
+    if (!inputFile) {
+        cerr << "Khong the mo file input.txt" << endl;
+        return 1;
     }
-    cout << endl;
 
-    // Câu c
-    int n;
-    cout << "Nhap so n (cot muon tinh tong): ";
-    cin >> n;
-    if (n >= 0 && n < y) {
-        int kq = TongCotN(a, x, n);
-        cout << "Tong cac GT tren cot " << n << " : " << kq << endl;
+    // Mở file output
+    ofstream outputFile("output.txt");
+    if (!outputFile) {
+        cerr << "Khong the tao file output.txt" << endl;
+        return 1;
+    }
+
+    // Đọc dữ liệu từ file
+    inputFile >> n >> m;
+
+    // Đọc available
+    for (int i = 0; i < m; i++) {
+        inputFile >> available[i];
+        work[i] = available[i]; // Khởi tạo work = available
+        workHistory[0][i] = work[i]; // Lưu work ban đầu
+    }
+
+    // Đọc ma trận max
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            inputFile >> max[i][j];
+        }
+    }
+
+    // Đọc ma trận allocation
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            inputFile >> allocation[i][j];
+            need[i][j] = max[i][j] - allocation[i][j];
+        }
+    }
+
+    inputFile.close();
+
+    // Thuật toán Banker
+    int count = 0;
+    while (count < n) {
+        bool found = false;
+
+        for (int i = 0; i < n; i++) {
+            if (!finish[i]) {
+                bool canAllocate = true;
+
+                for (int j = 0; j < m; j++) {
+                    if (need[i][j] > work[j]) {
+                        canAllocate = false;
+                        break;
+                    }
+                }
+
+                if (canAllocate) {
+                    // Cập nhật work
+                    for (int j = 0; j < m; j++) {
+                        work[j] += allocation[i][j];
+                    }
+
+                    // Lưu work vào lịch sử
+                    for (int j = 0; j < m; j++) {
+                        workHistory[count + 1][j] = work[j];
+                    }
+
+                    safeSequence[count] = i;
+                    finish[i] = true;
+                    count++;
+                    found = true;
+                }
+            }
+        }
+
+        if (!found) {
+            break; // Deadlock
+        }
+    }
+
+    // Ghi kết quả ra file output
+    if (count == n) {
+        outputFile << "He thong an toan. Thu tu an toan: ";
+        for (int i = 0; i < n; i++) {
+            outputFile << "P" << safeSequence[i];
+            if (i != n - 1) outputFile << " -> ";
+        }
+        outputFile << endl << endl;
+
+        // In bảng work
+        outputFile << "Bang Work sau moi buoc:" << endl;
+        outputFile << "Buoc\tWork" << endl;
+        for (int i = 0; i <= n; i++) {
+            outputFile << i << "\t";
+            for (int j = 0; j < m; j++) {
+                outputFile << workHistory[i][j] << " ";
+            }
+            outputFile << endl;
+        }
     }
     else {
-        cout << "Chi so cot n khong dung" << endl;
+        outputFile << "He thong khong an toan (co the xay ra deadlock)" << endl;
     }
+    inputFile.close();
+    outputFile.close();
 
-    // Câu d
-    int kq = GTLNtrongcacGTNNmoicot(GTNN);
-    cout << "GTLN trong cac GTNN moi cot la: " << kq << endl;
 
     return 0;
 }

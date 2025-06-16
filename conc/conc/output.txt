@@ -1,0 +1,10 @@
+He thong an toan. Thu tu an toan: P1 -> P3 -> P4 -> P0 -> P2
+
+Bang Work sau moi buoc:
+Buoc	Work
+0	3 3 2 
+1	5 3 2 
+2	7 4 3 
+3	7 4 5 
+4	7 5 5 
+5	10 5 7 
