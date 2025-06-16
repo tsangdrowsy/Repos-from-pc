@@ -1,0 +1,3 @@
+Ket qua thay the trang theo LRU (Frame: 3):
+Tong so page fault: 9
+Cac vi tri xay ra page fault: 0, 1, 2, 3, 5, 7, 8, 9, 10
