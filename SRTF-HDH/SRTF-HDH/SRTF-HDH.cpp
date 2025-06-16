@@ -1,7 +1,9 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
+#include <numeric>
 
 using namespace std;
 
@@ -10,7 +12,6 @@ struct Process {
     int burst_time;
     int arrival_time;
 };
-
 
 vector<Process> readProcesses(const string& filename) {
     ifstream file(filename);
@@ -29,9 +30,9 @@ vector<Process> readProcesses(const string& filename) {
     return processes;
 }
 
-
 void writeResults(const string& filename, const vector<Process>& processes,
-    const vector<int>& waiting_time, const vector<int>& turnaround_time) {
+    const vector<int>& waiting_time, const vector<int>& turnaround_time,
+    const vector<pair<int, int>>& gantt_chart) {
     ofstream out(filename);
 
     if (!out.is_open()) {
@@ -39,7 +40,7 @@ void writeResults(const string& filename, const vector<Process>& processes,
         return;
     }
 
-    out << "Ket qua dieu phoi FCFS:\n";
+    out << "Ket qua dieu phoi SRTF:\n";
     out << "ID\tBurst\tArrival\tWaiting\tTurnaround\n";
 
     for (size_t i = 0; i < processes.size(); i++) {
@@ -49,8 +50,17 @@ void writeResults(const string& filename, const vector<Process>& processes,
             << waiting_time[i] << "\t"
             << turnaround_time[i] << "\n";
     }
-}
 
+    double avg_waiting = accumulate(waiting_time.begin(), waiting_time.end(), 0.0) / processes.size();
+    out << fixed << setprecision(2);
+    out << "\nThoi gian cho trung binh: " << avg_waiting << endl;
+
+    out << "\nBieu do Gantt:\n";
+    out << "Thoi gian\tProcess\n";
+    for (const auto& entry : gantt_chart) {
+        out << entry.first << "\t\tP" << entry.second << "\n";
+    }
+}
 
 void SRTF(vector<Process> processes) {
     int n = processes.size();
@@ -58,7 +68,7 @@ void SRTF(vector<Process> processes) {
     vector<int> waiting_time(n, 0);
     vector<int> turnaround_time(n, 0);
     vector<bool> completed(n, false);
-
+    vector<pair<int, int>> gantt_chart; 
     for (int i = 0; i < n; ++i)
         remaining_time[i] = processes[i].burst_time;
 
@@ -72,6 +82,13 @@ void SRTF(vector<Process> processes) {
                 min_remaining = remaining_time[i];
                 idx = i;
             }
+        }
+
+        if (idx != prev) {
+            if (time > 0) {
+                gantt_chart.emplace_back(time, prev != -1 ? processes[prev].id : 0);
+            }
+            prev = idx;
         }
 
         if (idx != -1) {
@@ -88,18 +105,16 @@ void SRTF(vector<Process> processes) {
         time++;
     }
 
-    writeResults("output.txt", processes, waiting_time, turnaround_time);
+    if (prev != -1) {
+        gantt_chart.emplace_back(time, processes[prev].id);
+    }
+
+    writeResults("output.txt", processes, waiting_time, turnaround_time, gantt_chart);
 }
 
 int main() {
-
     vector<Process> processes = readProcesses("input.txt");
-
-
     SRTF(processes);
-
-    cout << "Ket qua da duoc ghi vao file output" << endl;
-
+	cout << "Ket qua da duoc ghi vao file output.txt" << endl;
     return 0;
 }
-

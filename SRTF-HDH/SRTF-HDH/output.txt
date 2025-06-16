@@ -1,0 +1,15 @@
+Ket qua dieu phoi SRTF:
+ID	Burst	Arrival	Waiting	Turnaround
+1	5	0	0	5
+2	3	2	3	6
+3	8	4	6	14
+4	2	6	2	4
+
+Thoi gian cho trung binh: 2.75
+
+Bieu do Gantt:
+Thoi gian	Process
+5		P1
+8		P2
+10		P4
+18		P3
