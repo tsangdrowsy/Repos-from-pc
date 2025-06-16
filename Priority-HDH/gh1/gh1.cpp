@@ -171,9 +171,9 @@ void PriorityScheduling(vector<Process> processes) {
 
 int main() {
     try {
-        vector<Process> processes = readProcesses("input_priority.txt");
+        vector<Process> processes = readProcesses("input.txt");
         PriorityScheduling(processes);
-        cout << "Da hoan thanh. Ket qua da duoc ghi vao file output_priority_preemptive.txt" << endl;
+        cout << "Da hoan thanh. Ket qua da duoc ghi vao file output.txt" << endl;
     }
     catch (const exception& e) {
         cerr << "Co loi xay ra: " << e.what() << endl;
