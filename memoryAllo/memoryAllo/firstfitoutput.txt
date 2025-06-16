@@ -1,0 +1,6 @@
+Ket qua dieu phoi bo nho theo First Fit:
+Process ID	Kich thuoc	Block duoc cap
+1		212		2
+2		417		5
+3		112		3
+4		426		Khong duoc cap phat
