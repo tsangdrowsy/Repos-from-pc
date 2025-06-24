@@ -1,3 +1,18 @@
 Ket qua thay the trang theo LRU (Frame: 3):
 Tong so page fault: 9
 Cac vi tri xay ra page fault: 0, 1, 2, 3, 5, 7, 8, 9, 10
+
+Bang thay the trang:
+Buoc	Frame 0	Frame 1	Frame 2	Page Fault
+1	7	-	-	x
+2	7	0	-	x
+3	7	0	1	x
+4	0	1	2	x
+5	1	2	0	
+6	2	0	3	x
+7	2	3	0	
+8	3	0	4	x
+9	0	4	2	x
+10	4	2	3	x
+11	2	3	0	x
+12	2	0	3	
