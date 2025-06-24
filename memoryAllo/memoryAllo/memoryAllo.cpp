@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ struct MemoryBlock {
 struct Process {
     int id;
     int size;
+    bool allocated;
 };
 
 void readMemoryAllocationInput(const string& filename, vector<MemoryBlock>& blocks, vector<Process>& processes) {
@@ -37,29 +39,71 @@ void readMemoryAllocationInput(const string& filename, vector<MemoryBlock>& bloc
     for (int i = 0; i < processCount; i++) {
         processes[i].id = i + 1;
         file >> processes[i].size;
+        processes[i].allocated = false;
     }
 }
 
 void writeMemoryAllocationOutput(const string& filename, const vector<Process>& processes,
-    const vector<int>& allocation, const string& algorithm) {
+    const vector<int>& allocation, const string& algorithm, const vector<MemoryBlock>& initialBlocks) {
     ofstream out(filename);
     if (!out.is_open()) {
         cerr << "Khong the tao file " << filename << endl;
         return;
     }
 
-    out << "Ket qua dieu phoi bo nho theo " << algorithm << ":\n";
-    out << "Process ID\tKich thuoc\tBlock duoc cap\n";
+    out << "Ket qua dieu phoi bo nho theo " << algorithm << ":\n\n";
+    
+    // Display memory blocks information
+    out << "Cac khoi bo nho:\n";
+    out << "Block ID\tKich thuoc\n";
+    for (const auto& block : initialBlocks) {
+        out << block.id << "\t\t" << block.size << "\n";
+    }
+    out << "\n";
 
+    // Display allocation results
+    out << "Phan bo bo nho:\n";
+    out << "Process ID\tKich thuoc\tBlock duoc cap\tTrang thai\n";
+    out << string(60, '-') << "\n";
+
+    int unallocatedCount = 0;
     for (size_t i = 0; i < processes.size(); i++) {
         out << processes[i].id << "\t\t" << processes[i].size << "\t\t";
         if (allocation[i] != -1) {
-            out << allocation[i];
+            out << allocation[i] << "\t\t";
+            // Find the block size
+            int blockSize = 0;
+            for (const auto& block : initialBlocks) {
+                if (block.id == allocation[i]) {
+                    blockSize = block.size;
+                    break;
+                }
+            }
+            out << "Da cap phat (Block size: " << blockSize << ")";
         }
         else {
-            out << "Khong duoc cap phat";
+            out << "-\t\t";
+            out << "KHONG duoc cap phat";
+            unallocatedCount++;
         }
         out << "\n";
+    }
+
+    // Display summary
+    out << "\nTong ket:\n";
+    out << "- Tong so tien trinh: " << processes.size() << "\n";
+    out << "- So tien trinh duoc cap phat: " << processes.size() - unallocatedCount << "\n";
+    out << "- So tien trinh KHONG duoc cap phat: " << unallocatedCount << "\n";
+
+    // Display unallocated processes details if any
+    if (unallocatedCount > 0) {
+        out << "\nCac tien trinh KHONG duoc cap phat:\n";
+        out << "Process ID\tKich thuoc\n";
+        for (size_t i = 0; i < processes.size(); i++) {
+            if (allocation[i] == -1) {
+                out << processes[i].id << "\t\t" << processes[i].size << "\n";
+            }
+        }
     }
 }
 
@@ -108,14 +152,14 @@ void memoryAllocation() {
     readMemoryAllocationInput("input.txt", blocks, processes);
 
     vector<int> firstFitAllocation = firstFit(blocks, processes);
-    writeMemoryAllocationOutput("firstfitoutput.txt", processes, firstFitAllocation, "First Fit");
+    writeMemoryAllocationOutput("firstfitoutput.txt", processes, firstFitAllocation, "First Fit", blocks);
 
     vector<int> bestFitAllocation = bestFit(blocks, processes);
-    writeMemoryAllocationOutput("bestfitoutput.txt", processes, bestFitAllocation, "Best Fit");
+    writeMemoryAllocationOutput("bestfitoutput.txt", processes, bestFitAllocation, "Best Fit", blocks);
 }
+
 int main() {
     memoryAllocation();
-
-
+    cout << "Da hoan thanh viec dieu phoi bo nho.\n";
     return 0;
 }
