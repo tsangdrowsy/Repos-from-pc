@@ -1,4 +1,4 @@
-Ket qua dieu phoi bo nho theo Best Fit:
+Ket qua dieu phoi bo nho theo First Fit:
 
 Cac khoi bo nho:
 Block ID	Kich thuoc
@@ -11,12 +11,16 @@ Block ID	Kich thuoc
 Phan bo bo nho:
 Process ID	Kich thuoc	Block duoc cap	Trang thai
 ------------------------------------------------------------
-1		212		4		Da cap phat (Block size: 300)
-2		417		2		Da cap phat (Block size: 500)
+1		212		2		Da cap phat (Block size: 500)
+2		417		5		Da cap phat (Block size: 600)
 3		112		3		Da cap phat (Block size: 200)
-4		426		5		Da cap phat (Block size: 600)
+4		426		-		KHONG duoc cap phat
 
 Tong ket:
 - Tong so tien trinh: 4
-- So tien trinh duoc cap phat: 4
-- So tien trinh KHONG duoc cap phat: 0
+- So tien trinh duoc cap phat: 3
+- So tien trinh KHONG duoc cap phat: 1
+
+Cac tien trinh KHONG duoc cap phat:
+Process ID	Kich thuoc
+4		426
