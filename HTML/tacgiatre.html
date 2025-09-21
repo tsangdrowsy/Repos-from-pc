@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=760,initial-scale=1" />
+    <title>Coffee Online - Replica</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+        }
+        .page {
+            position: relative;
+            width: 760px;
+            height: 760px;
+            margin: 0 auto;
+            background: #fff;
+        }
+        .header {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 60px;
+        }
+        .scaal-row {
+            position: absolute;
+            left: 120px;
+            top: 10px;
+            display: flex;
+            gap: 2px;
+        }
+        .scaal-box {
+            width: 40px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+        }
+        .scaal-s { background: #bdb07c; }
+        .scaal-c { background: #a98c6c; }
+        .scaal-a1 { background: #bfae8b; }
+        .scaal-a2 { background: #d6c7a2; }
+        .scaal-l { background: #eae7d6; }
+        .tagline {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            font-size: 18px;
+            color: #222;
+        }
+        .thin-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #222;
+            top: 48px;
+            opacity: 0.2;
+        }
+        .nav {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .nav-btn {
+            width: 110px;
+            height: 36px;
+            border: 2px solid #222;
+            background: #fff;
+            color: #222;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 36px;
+            margin-left: 10px;
+            margin-bottom: 2px;
+            cursor: pointer;
+        }
+        .card {
+            position: absolute;
+            left: 120px;
+            top: 60px;
+            width: 600px;
+            height: 660px;
+            background: #bf8b17;
+            box-sizing: border-box;
+            padding: 32px 38px 0 38px;
+            color: #222;
+        }
+        .card h1 {
+            font-size: 36px;
+            margin: 0 0 8px;
+            font-weight: 700;
+            color: #222;
+        }
+        .card p {
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 0 0 18px 0;
+        }
+        .logo-coffee {
+            position: absolute;
+            right: 38px;
+            top: 38px;
+            width: 180px;
+        }
+        .card-cup {
+            position: absolute;
+            right: 38px;
+            top: 120px;
+            width: 160px;
+            border: 2px solid #222;
+            background: #eee;
+            padding: 8px;
+        }
+        .globe {
+            position: absolute;
+            left: -60px;
+            bottom: 0;
+            width: 320px;
+            opacity: 0.7;
+        }
+        .footer-wording {
+            position: absolute;
+            left: 40px;
+            bottom: 60px;
+            font-size: 54px;
+            color: #9ea2a0;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .footer-coffee {
+            position: absolute;
+            left: 120px;
+            bottom: 30px;
+            font-size: 54px;
+            color: #0c6b60;
+            font-style: italic;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="scaal-row">
+                <div class="scaal-box scaal-s">S</div>
+                <div class="scaal-box scaal-c">C</div>
+                <div class="scaal-box scaal-a1">A</div>
+                <div class="scaal-box scaal-a2">A</div>
+                <div class="scaal-box scaal-l">L</div>
+            </div>
+            <div class="tagline">brave new world coffee</div>
+            <div class="thin-line"></div>
+        </div>
+        <div class="nav">
+            <img class="nav-btn" src="Images/ourstory_up.gif" alt="our story" onclick="window.location.href='story.html'" style="cursor:pointer;">
+            <div class="nav-btn">products</div>
+            <div class="nav-btn">this week</div>
+        </div>
+        <div class="card">
+            <h1>Welcome <span style="font-size:20px;font-weight:400;">to the Scaal</span></h1>
+            <p>Coffee Web site, home of the finest coffee gifts in the world.</p>
+            <p>Take a moment to view our many products. We offer fine roasted products as well as items to wear and items for the office.</p>
+            <p>Scaal has been serving fine coffee connoisseurs like you for over 50 years. We follow a roasting process that produces the finest coffees in the world.</p>
+            <p>Check with us often to see our special promotions of the week.</p>
+            <img class="logo-coffee" src="Images/coffee_online.gif" alt="coffee online logo">
+            <div class="card-cup">
+                <img src="Images/cup.jpg" alt="cup">
+            </div>
+        </div>
+        <img class="globe" src="Images/logo_globe_a.gif" alt="globe">
+        <div class="footer-wording">new <span style="font-size:32px;vertical-align:middle;color:#bdbdbd">world</span></div>
+        <div class="footer-coffee">coffee</div>
+    </div>
+</body>
+
+</html>

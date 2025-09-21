@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=760,initial-scale=1" />
+    <title>Our Story - SCAAL Coffee</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+        }
+
+        .page {
+            position: relative;
+            width: 760px;
+            min-height: 1200px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        .header {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 60px;
+        }
+
+        .scaal-row {
+            position: absolute;
+            left: 120px;
+            top: 10px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .scaal-box {
+            width: 40px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .scaal-s {
+            background: #bdb07c;
+        }
+
+        .scaal-c {
+            background: #a98c6c;
+        }
+
+        .scaal-a1 {
+            background: #bfae8b;
+        }
+
+        .scaal-a2 {
+            background: #d6c7a2;
+        }
+
+        .scaal-l {
+            background: #eae7d6;
+        }
+
+        .tagline {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            font-size: 18px;
+            color: #222;
+        }
+
+        .thin-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #222;
+            top: 48px;
+            opacity: 0.2;
+        }
+
+        .nav {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .nav-btn {
+            width: 110px;
+            height: 36px;
+            border: 2px solid #222;
+            background: #fff;
+            color: #222;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 36px;
+            margin-left: 10px;
+            margin-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .nav-btn.active {
+            background: #eae7d6;
+            color: #222;
+        }
+
+        .card {
+            position: absolute;
+            left: 120px;
+            top: 60px;
+            width: 600px;
+            min-height: 1100px;
+            background: #bdb07c;
+            box-sizing: border-box;
+            padding: 32px 38px 0 38px;
+            color: #222;
+        }
+
+        h1,
+        h2 {
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #7a7a3a;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #7a7a3a;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .link {
+            color: #a98c6c;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #222;
+            background: #fff;
+            padding: 8px 0;
+        }
+
+        .globe {
+            position: absolute;
+            left: 0;
+            bottom: 60px;
+            width: 320px;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .footer-wording {
+            position: absolute;
+            left: 40px;
+            bottom: 100px;
+            font-size: 54px;
+            color: #9ea2a0;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .footer-coffee {
+            position: absolute;
+            left: 120px;
+            bottom: 70px;
+            font-size: 54px;
+            color: #0c6b60;
+            font-style: italic;
+        }
+
+        .to-top {
+            color: #a98c6c;
+            text-decoration: underline;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <a href="index.html" style="text-decoration:none;">
+                <div class="scaal-row">
+                    <div class="scaal-box scaal-s" onclick="scrollToSection('best-coffee')">S</div>
+                    <div class="scaal-box scaal-c" onclick="scrollToSection('best-coffee')">C</div>
+                    <div class="scaal-box scaal-a1" onclick="scrollToSection('best-coffee')">A</div>
+                    <div class="scaal-box scaal-a2" onclick="scrollToSection('best-coffee')">A</div>
+                    <div class="scaal-box scaal-l" onclick="scrollToSection('best-coffee')">L</div>
+                </div>
+            </a>
+            <div class="tagline">brave new world coffee</div>
+            <div class="thin-line"></div>
+        </div>
+        <div class="nav">
+            <img class="nav-btn" src="Images/ourstory_up.gif" alt="our story" style="cursor:pointer;">
+            <img class="nav-btn" src="Images/products_up.gif" alt="products">
+            <img class="nav-btn" src="Images/thisweek_up.gif" alt="this week">
+        </div>
+        <div class="card">
+            <div class="section">
+                <h1 id="our-story">Our Story</h1>
+                <p>What is the one philosophy that drives <span class="link"
+                        onclick="scrollToSection('best-coffee')">SCAAL</span>? We believe that no matter where you go,
+                    you should always be able to enjoy the simple pleasure of a good cup of coffee in a comfortable
+                    environment. At home, reading the morning paper. At your local SCAAL, conversing with a confidant.
+                    Or perhaps in some foreign land, SCAAL will be greeting you like an old friend. After all, coffee is
+                    a ritual that transcends all cultural boundaries. It makes us feel alert, energetic and alive.</p>
+            </div>
+            <div class="section">
+                <h2 id="where-began"><span class="link" onclick="scrollToSection('where-began')">Where we began</span>
+                </h2>
+                <p>Anders Carlson lived a sheltered life in a small fishing village in Marstrand, Sweden. As a child, he
+                    listened to stories of his grandfather Oluf's adventures and expeditions. Often his grandfather
+                    would bring back exotic coffees for the family to enjoy.</p>
+                <p>Upon his graduation Anders left home to see the world. He worked all kinds of odd jobs. He worked in
+                    Parisian cafes and Italian espresso bars. He worked in the coffee fields of Brazil and New Guinea.
+                    And in a few years, Anders learned the art of selecting the perfect coffee bean and roasting it to
+                    perfection.</p>
+                <p>He returned home in 1980 to open the first SCAAL in Stockholm, Sweden. By creating his own unique
+                    blends of coffee and a stimulating atmosphere, SCAAL quickly became the place to gather – day or
+                    night – not only in Stockholm, Sweden, but 670 cities around the world.</p>
+            </div>
+            <div class="section">
+                <h2 id="best-coffee"><span class="link" onclick="scrollToSection('best-coffee')">What makes SCAAL the
+                        best coffee?</span></h2>
+                <p>Anders has passed down the knowledge he learned as an apprentice in the coffee fields to every buyer,
+                    roaster, and franchise owner. SCAAL's standards for coffee are never compromised. We only select SHB
+                    – strictly hard bean or strictly high grown – coffee beans. To ensure their flavorful oils are
+                    preserved, extraordinary steps are taken to protect the coffee bean from heat, light, air and
+                    moisture.</p>
+                <p>All these efforts are made so that we may offer you a perfect cup of coffee.</p>
+                <p>There are so many places you could go to buy coffee. We've gone to extraordinary efforts to ensure
+                    that SCAAL is your best choice. The quality begins at harvest. SCAAL relies on selective picking, a
+                    labor-intensive process that involves making several passes among the trees for those cherries that
+                    are perfectly ripe. Then we select top grade SHB, which stands for strictly hard bean or strictly
+                    high grown. Beans that are grown at a minimum altitude of 4,000 feet above sea level for optimum
+                    flavor. Within hours of shipping our coffee to you, the beans are roasted on-site in small batches
+                    by a Certified Roastmaster and vacuum-packed to retain its fresh taste and rich aroma.</p>
+            </div>
+            <div class="section" style="text-align:right;">
+                <span class="to-top" onclick="scrollToSection('our-story')">&gt;&gt;top</span>
+            </div>
+        </div>
+    <img class="globe" src="Images/logo_globe_a.gif" alt="globe">
+    <div class="footer-wording">new <span style="font-size:32px;vertical-align:middle;color:#bdbdbd">world</span>
+    </div>
+    <div class="footer-coffee">coffee</div>
+    <script>
+        function scrollToSection(id) {
+            var el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
