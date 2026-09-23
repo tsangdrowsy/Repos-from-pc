@@ -104,7 +104,7 @@ namespace Bai2
             return new Point(midX, midY);
         }
 
-        public static void Main(string[] args)
+        public static void Main(string[] args) //AI slop main for testing @@ 
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
