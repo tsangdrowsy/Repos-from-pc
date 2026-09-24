@@ -10,7 +10,7 @@ namespace Bai3
         public int yob;
         public int yod;
 
-       public Person()
+        public Person()
         {
             id = "";
             name = "";
@@ -18,7 +18,7 @@ namespace Bai3
             yod = 0;
         }
 
-         public Person(Person other) //copy
+        public Person(Person other) //copy
         {
             if (other != null)
             {
@@ -29,7 +29,7 @@ namespace Bai3
             }
         }
 
-         public Person(string id, string name, int yob, int yod) //input yes
+        public Person(string id, string name, int yob, int yod) //input yes
         {
             this.id = id;
             this.name = name;
@@ -37,9 +37,35 @@ namespace Bai3
             this.yod = yod;
         }
 
-         public bool IsLiving()
+        public bool IsLiving()
         {
             return yod == 0;
+        }
+
+        public void Output()
+        {
+            string trangThai = IsLiving() ? "Còn sống" : $"Đã mất năm {yod}";
+            Console.WriteLine($"Id: {id}, Tên: {name}, Năm sinh: {yob}, Trạng thái: {trangThai}");
+        }
+
+
+         public void Input()
+    {
+        Console.Write("Nhập id: ");
+        id = Console.ReadLine();
+
+        Console.Write("Nhập tên: ");
+        name = Console.ReadLine();
+
+        Console.Write("Nhập năm sinh: ");
+        yob = int.Parse(Console.ReadLine());
+
+        Console.Write("Nhập năm mất (0 nếu còn sống): ");
+        yod = int.Parse(Console.ReadLine());
+    }
+        public override string ToString()
+        {
+            return $"Person[{id}, {name}, {yob}, {yod}]";
         }
     }
 }

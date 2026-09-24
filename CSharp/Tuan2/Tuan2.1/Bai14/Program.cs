@@ -27,7 +27,7 @@ namespace Bai14
                 luongReal = 0;
             }
 
-            Console.WriteLine("\n--- THÔNG TIN LƯƠNG NHÂN VIÊN ---");
+            Console.WriteLine("\n THÔNG TIN LƯƠNG NHÂN VIÊN ");
             Console.WriteLine($"Họ và tên   : {hoTen}");
             Console.WriteLine($"Mức lương   : {Luong:N0} VNĐ");
             Console.WriteLine($"Số ngày vắng: {soNgayVang}");
