@@ -11,7 +11,7 @@ using System.Text.Unicode; //added this to support Unicode
 public class ConsoleMenu
 {
     // Một mục menu
-    protected class MenuItem
+    public class MenuItem
     {
         public int So { get; set; }
         public string MoTa { get; set; }
@@ -28,20 +28,20 @@ public class ConsoleMenu
     public string TieuDe { get; set; } = "MENU";
 
     // Thêm một mục menu
-    protected void ThemMuc(int so, string moTa, Action hanhDong)
+    public void ThemMuc(int so, string moTa, Action hanhDong)
     {
         items.Add(new MenuItem { So = so, MoTa = moTa, HanhDong = hanhDong });
         items.Sort((a, b) => a.So.CompareTo(b.So));   // sắp theo số
     }
 
     // In menu ra màn hình
-    protected virtual void HienThiMenu()
+    public virtual void HienThiMenu()
     {
-        Console.WriteLine("\n========== " + TieuDe + " ==========");
+        Console.WriteLine("\n" + TieuDe + "");
         foreach (var it in items)
             Console.WriteLine($"{it.So}. {it.MoTa}");
         Console.WriteLine("0. Thoát chương trình");
-        Console.WriteLine("==================================");
+        Console.WriteLine("");
     }
 
     // Vòng lặp chính
@@ -76,7 +76,7 @@ public class ConsoleMenu
             }
             else
             {
-                Console.WriteLine($"Bạn thực hiện chức năng {chon}: {chon_item.MoTa}");
+                Console.WriteLine($"you chose {chon}: {chon_item.MoTa}");
                 try
                 {
                     chon_item.HanhDong?.Invoke();
@@ -102,10 +102,10 @@ public class PTBac2Console : ConsoleMenu
         ThemMuc(3, "Xem lại hệ số đã nhập", XemHeSo);
     }
 
-    private double a, b, c;
-    private bool daNhap = false;
+    public double a, b, c;
+    public bool daNhap = false;
 
-    private void NhapHeSo()
+    public void NhapHeSo()
     {
         Console.Write("Nhập a: ");
         a = double.Parse(Console.ReadLine());
@@ -117,7 +117,7 @@ public class PTBac2Console : ConsoleMenu
         Console.WriteLine("Đã lưu hệ số.");
     }
 
-    private void XemHeSo()
+    public void XemHeSo()
     {
         if (!daNhap)
         {
@@ -127,7 +127,7 @@ public class PTBac2Console : ConsoleMenu
         Console.WriteLine($"Phương trình: {a}x^2 + {b}x + {c} = 0");
     }
 
-    private void GiaiPT()
+    public void GiaiPT()
     {
         if (!daNhap)
         {

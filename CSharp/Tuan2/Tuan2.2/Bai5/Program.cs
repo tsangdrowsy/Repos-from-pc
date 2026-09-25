@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Unicode;
 
 
 namespace Bai5
@@ -58,6 +59,30 @@ namespace Bai5
                 return $"{HeSo}x";
 
             return $"{HeSo}x^{SoMu}";
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+
+
+            // Nhập đơn thức từ bàn phím 
+            Console.WriteLine("\n Nhập một đơn thức");
+            Console.Write("Nhập hệ số a: ");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("Nhập số mũ n (>= 0): ");
+            int n = int.Parse(Console.ReadLine());
+
+            // DonThuc dNhap = new DonThuc(a, n);
+            // Console.WriteLine($"Đơn thức vừa nhập: {dNhap}");
+            // Console.WriteLine($"Giá trị tại x = {x}: {dNhap.TinhGiaTri(x)}");
+
+            // DonThuc daoHamNhap = dNhap.DaoHam();
+            // Console.WriteLine($"Đạo hàm: {daoHamNhap}");
+            // Console.WriteLine($"Giá trị đạo hàm tại x = {x}: {daoHamNhap.TinhGiaTri(x)}");
+
+
         }
     }
 }

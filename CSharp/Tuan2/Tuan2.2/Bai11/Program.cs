@@ -135,3 +135,24 @@ public class DayPhanSo
         return "DayPhanSo[" + string.Join(", ", danhSach) + "]";
     }
 }
+class Program
+{
+    public static void Main()
+    {
+        // Tạo dãy phân số từ mảng có sẵn
+        PhanSo[] arr = {
+            new PhanSo(1, 2),
+            new PhanSo(1, 3),
+            new PhanSo(1, 6)
+        };
+        DayPhanSo ds = new DayPhanSo(arr);
+
+        Console.WriteLine("Dãy phân số:");
+        ds.Xuat();
+
+        // Tính tổng
+        PhanSo tong = ds.TinhTong();
+        Console.WriteLine($"Tổng = {tong}");
+    
+    }
+}

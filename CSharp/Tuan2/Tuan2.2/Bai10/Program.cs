@@ -1,21 +1,16 @@
 ﻿using System;
-
-
-
+using System.Text.Unicode;
 using Bai5;
-
-
-
 
 
 public class DaThuc
 {
-    // Field: mảng n+1 đơn thức, chỉ số i = đơn thức bậc i
-    private DonThuc[] donThucs;
-    private int n;
+    
+    public DonThuc[] donThucs;
+    public int n;
 
 
-    // Default constructor: đa thức 0 (bậc 0, hệ số 0)
+    // Default constructor
     public DaThuc()
     {
         n = 0;
@@ -197,4 +192,18 @@ public class DaThuc
         if (!daIn) s += "0";
         return s;
     }
+    class Program
+{
+    static void Main()
+    {
+        // Tạo đa thức từ mảng hệ số: P(x) = 3 - 2x + 0x^2 + 5x^3
+        double[] heSo = { 3, -2, 0, 5 };
+        DaThuc p = new DaThuc(heSo);
+
+
+        Console.Write("Nhập x để tính giá trị: ");
+        double x2 = double.Parse(Console.ReadLine());
+        Console.WriteLine($"P({x2}) = {p.TinhGiaTri(x2)}");
+    }
+}
 }

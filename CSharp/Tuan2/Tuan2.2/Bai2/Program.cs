@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.Unicode;
+
 
 
 namespace Bai2
@@ -106,34 +108,34 @@ namespace Bai2
 
         public static void Main(string[] args) //AI slop main for testing @@ 
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            
 
-            Console.WriteLine("--- Nhập tọa độ điểm A ---");
+            Console.WriteLine("Nhập tọa độ điểm A");
             Point A = new Point();
             A.Input();
 
-            Console.WriteLine("\n--- Nhập tọa độ điểm B ---");
+            Console.WriteLine("\n Nhập tọa độ điểm B ");
             Point B = new Point();
             B.Input();
 
             Console.WriteLine($"\nĐiểm A: {A}");
             Console.WriteLine($"Điểm B: {B}");
 
-            Console.WriteLine("\n--- (a) Tính Khoảng Cách Giữa A và B ---");
+            Console.WriteLine("\n(a) Tính Khoảng Cách Giữa A và B ");
 
             double d1 = A.KhoangCachD(B);
-            Console.WriteLine($"Cách 1 (Phương thức thành viên): AB = {d1:F2}");
+            Console.WriteLine($" (Phương thức thành viên): AB = {d1:F2}");
 
             double d2 = Point.Distance(A, B);
-            Console.WriteLine($"Cách 2 (Phương thức tĩnh):      AB = {d2:F2}");
+            Console.WriteLine($"(Phương thức tĩnh):      AB = {d2:F2}");
 
-            Console.WriteLine("\n--- (b) Xác Định Trung Điểm I của AB ---");
+            Console.WriteLine("\n(b) Xác Định Trung Điểm I của AB");
 
             Point I1 = A.MidpointWith(B);
-            Console.WriteLine($"Cách 1 (Phương thức thành viên): I = {I1}");
+            Console.WriteLine($"(Phương thức thành viên): I = {I1}");
 
             Point I2 = Point.Midpoint(A, B);
-            Console.WriteLine($"Cách 2 (Phương thức tĩnh):      I = {I2}");
+            Console.WriteLine($"(Phương thức tĩnh):      I = {I2}");
 
             Console.ReadLine();
         }

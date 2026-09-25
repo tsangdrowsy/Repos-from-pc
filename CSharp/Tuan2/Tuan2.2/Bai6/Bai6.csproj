@@ -7,4 +7,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+<ItemGroup>
+  <ProjectReference Include="..\Bai2\Bai2.csproj" />
+</ItemGroup>
 </Project>

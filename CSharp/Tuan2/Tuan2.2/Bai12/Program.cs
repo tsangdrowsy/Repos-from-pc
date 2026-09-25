@@ -71,8 +71,8 @@ namespace Bai12
         public void Xuat()
         {
             Console.WriteLine(
-                $"  {HoTen,-20} | Lương: {MucLuong,12:N0} | " +
-                $"Vắng: {SoNgayVang,3} ngày | Trừ: {TienBiTru(),10:N0} | " +
+                $"  {HoTen,-20} Lương: {MucLuong,12:N0}  " +
+                $"Vắng: {SoNgayVang,3} ngày  Trừ: {TienBiTru(),10:N0} " +
                 $"Thực lĩnh: {LuongThucLinh(),12:N0}");
         }
 
@@ -190,7 +190,7 @@ namespace Bai12
                 tong += danhSach[i].LuongThucLinh();
             return tong;
         }
-
+        //extras cause idk what kind of sum is being asked
         public double TongLuongCoBan()
         {
             double tong = 0;
@@ -219,4 +219,21 @@ namespace Bai12
             return s;
         }
     }
+//     class Program
+//     {
+//         static void Main()
+//         {
+//             NhanVien[] arr =
+//             {
+//             new NhanVien("Nguyễn Văn A", 10000000, 2),
+//             new NhanVien("Trần Thị B",   12000000, 0),
+//             new NhanVien("Lê Văn C",      8000000, 5)
+//         };
+//             PhongBan pb = new PhongBan(arr);
+
+//             pb.Xuat();
+          
+//             Console.WriteLine($"Tổng lương thực lĩnh: {pb.TongLuongThucLinh():N0} VNĐ");
+//         }
+//     }
 }

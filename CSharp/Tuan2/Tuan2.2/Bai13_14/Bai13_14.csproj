@@ -8,7 +8,5 @@
   </PropertyGroup>
 
 
-<ItemGroup>
-  <ProjectReference Include="..\Bai12\Bai12.csproj" />
-</ItemGroup>
+
 </Project>

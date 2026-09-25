@@ -1,23 +1,23 @@
 ﻿using System;
 
-public class DaySo
+public class Mang1Chieu
 {
-    // Field: mảng 1 chiều các số nguyên
+
     private int[] mang;
 
-    // Số phần tử thực tế của dãy
+
     private int n;
 
 
-    // Default constructor: dãy rỗng
-    public DaySo()
+    // Default constructor
+    public Mang1Chieu()
     {
         n = 0;
         mang = new int[0];
     }
 
     // Constructor tạo dãy có n phần tử (mặc định giá trị 0)
-    public DaySo(int n)
+    public Mang1Chieu(int n)
     {
         if (n < 0)
             throw new ArgumentException("Số phần tử không được âm.", nameof(n));
@@ -27,7 +27,7 @@ public class DaySo
     }
 
     // Constructor từ mảng int[] có sẵn
-    public DaySo(int[] arr)
+    public Mang1Chieu(int[] arr)
     {
         if (arr == null)
             throw new ArgumentNullException(nameof(arr));
@@ -37,7 +37,7 @@ public class DaySo
         Array.Copy(arr, mang, n);
     }
     //copy constructor
-    public DaySo(DaySo other)
+    public Mang1Chieu(Mang1Chieu other)
     {
         if (other == null)
             throw new ArgumentNullException(nameof(other));
@@ -109,7 +109,7 @@ public class DaySo
     }
 
     // Trả về một DaySo mới chỉ gồm các số chẵn
-    public DaySo TimSoChan()
+    public Mang1Chieu TimSoChan()
     {
         // Đếm số chẵn trước
         int dem = 0;
@@ -128,7 +128,7 @@ public class DaySo
                 ketQua[j++] = mang[i];
         }
 
-        return new DaySo(ketQua);
+        return new Mang1Chieu(ketQua);
     }
 
     //override
@@ -138,5 +138,29 @@ public class DaySo
             return "DaySo[]";
 
         return "DaySo[" + string.Join(", ", mang) + "]";
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+
+            Mang1Chieu ds = new Mang1Chieu(new int[] { 4, 7, 2, 9, 1, 5, 8 });
+
+
+            ds.Xuat();
+
+            // Truy cập qua indexer
+            Console.WriteLine($"Phần tử thứ 2: {ds[2]}");
+
+
+            // Tìm số chẵn
+            Mang1Chieu chan = ds.TimSoChan();
+            Console.WriteLine("Các số chẵn trong dãy: ");
+            chan.Xuat();
+        }
     }
 }

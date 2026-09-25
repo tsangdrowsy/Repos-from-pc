@@ -8,7 +8,7 @@ namespace Bai4
         public int TuSo { get; set; }
         public int MauSo { get; set; }
 
-        // Constructor mặc nhiên: 
+        // Constructor
         public PhanSo() : this(0, 1) { }
 
         // Constructor khởi tạo phân số với mẫu = 1

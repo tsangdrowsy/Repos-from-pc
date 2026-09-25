@@ -31,7 +31,7 @@ public abstract class NhanVien
 
     public virtual void Xuat()
     {
-        Console.Write($"{MaNV,-8} | {HoTen,-20} | Lương: {TinhLuong(),12:N0} VNĐ");
+        Console.Write($"{MaNV,-8}  {HoTen,-20}  Lương: {TinhLuong(),12:N0} VNĐ");
     }
 
     public override string ToString()
@@ -72,7 +72,7 @@ public class NhanVienKinhDoanh : NhanVien
     public override void Xuat()
     {
         base.Xuat();
-        Console.WriteLine($" | [KD] {SoHopDong} HĐ");
+        Console.WriteLine($"  [KD] {SoHopDong} HĐ");
     }
 }
 
@@ -131,7 +131,7 @@ class Program
             new NhanVienSanXuat  ("SX02", "Hoàng Thị D",  2000),
         };
 
-        Console.WriteLine("===== BẢNG LƯƠNG NHÂN VIÊN =====");
+        Console.WriteLine("Bảng lương NV");
         double tongLuong = 0;
         foreach (NhanVien nv in ds)
         {

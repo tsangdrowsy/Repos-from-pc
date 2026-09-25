@@ -46,8 +46,8 @@ public abstract class ThiSinh
     public virtual void Xuat()
     {
         Console.WriteLine(
-            $"{Sbd,-8} | {HoTen,-20} | {LoaiThiSinh,-10} | " +
-            $"B1={Bai1,4} B2={Bai2,4} B3={Bai3,4} | " +
+            $"{Sbd,-8}  {HoTen,-20}  {LoaiThiSinh,-10}  " +
+            $"B1={Bai1,4} B2={Bai2,4} B3={Bai3,4}  " +
             $"Tổng = {TinhTongDiem(),6:F2}");
     }
 }
@@ -90,9 +90,9 @@ public class ThiSinhChuyen : ThiSinh
 
     public override void Xuat()
     {
-        Console.Write($"{Sbd,-8} | {HoTen,-20} | {LoaiThiSinh,-10} | ");
-        Console.Write($"B1={Bai1,4} B2={Bai2,4} B3={Bai3,4} | TA={TiengAnh,4} | ");
-        Console.WriteLine($"Thưởng TA={DiemThuongTiengAnh()} | Tổng = {TinhTongDiem(),6:F2}");
+        Console.Write($"{Sbd,-8}  {HoTen,-20}  {LoaiThiSinh,-10}  ");
+        Console.Write($"B1={Bai1,4} B2={Bai2,4} B3={Bai3,4} TA={TiengAnh,4} | ");
+        Console.WriteLine($"Thưởng TA={DiemThuongTiengAnh()} Tổng = {TinhTongDiem(),6:F2}");
     }
 }
 
@@ -127,8 +127,8 @@ public class ThiSinhSieuCup : ThiSinh
 
     public override void Xuat()
     {
-        Console.Write($"{Sbd,-8} | {HoTen,-20} | {LoaiThiSinh,-10} | ");
-        Console.Write($"B1={Bai1,4} B2={Bai2,4} B3={Bai3,4} | CSDL={Csdl,4} | ");
+        Console.Write($"{Sbd,-8}  {HoTen,-20}  {LoaiThiSinh,-10}  ");
+        Console.Write($"B1={Bai1,4} B2={Bai2,4} B3={Bai3,4}  CSDL={Csdl,4}  ");
         Console.WriteLine($"Tổng = {TinhTongDiem(),6:F2}");
     }
 }
@@ -157,7 +157,7 @@ class Program
             ds[i].Nhap();
         }
 
-        Console.WriteLine("\n===== KẾT QUẢ THI =====");
+        Console.WriteLine("\n KẾT QUẢ THI ");
         foreach (ThiSinh ts in ds)
             ts.Xuat();
 

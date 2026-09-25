@@ -2,10 +2,10 @@
 
 public class Mang2Chieu
 {
-    private int[,] mang;
+    public int[,] mang;
 
-    private int soDong;    
-    private int soCot;     
+    public int soDong;
+    public int soCot;
 
 
     // Default constructor: mảng rỗng 0x0
@@ -136,35 +136,7 @@ public class Mang2Chieu
 
         return true;
     }
-
-    // Trả về một Mang2Chieu mới cùng kích thước,
-    // phần tử không phải số nguyên tố thì để 0.
-    // Đồng thời in ra danh sách các số nguyên tố tìm được.
-    public Mang2Chieu TimSoNguyenTo()
-    {
-        Mang2Chieu ketQua = new Mang2Chieu(soDong, soCot);
-        bool coNguyenTo = false;
-
-        for (int i = 0; i < soDong; i++)
-        {
-            for (int j = 0; j < soCot; j++)
-            {
-                if (LaSoNguyenTo(mang[i, j]))
-                {
-                    ketQua[i, j] = mang[i, j];
-                    coNguyenTo = true;
-                }
-            }
-        }
-
-        if (!coNguyenTo)
-            Console.WriteLine("Không có số nguyên tố trong mảng.");
-
-        return ketQua;
-    }
-
-    // Phiên bản khác: trả về mảng 1 chiều chứa các số nguyên tố
-    public int[] LayDanhSachSoNguyenTo()
+     public int[] LayDanhSachSoNguyenTo()
     {
         // Đếm trước
         int dem = 0;
@@ -183,7 +155,9 @@ public class Mang2Chieu
         return ketQua;
     }
 
-    // ============ Override ToString ============
+
+
+    // Override ToString 
 
     public override string ToString()
     {
@@ -203,5 +177,33 @@ public class Mang2Chieu
         }
         s += "]";
         return s;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            // Tạo sẵn mảng 2 chiều (không nhập từ bàn phím)
+            int[,] arr = {
+            {  1,  2,  3,  4 },
+            {  5,  6,  7,  8 },
+            {  9, 10, 11, 13 }
+        };
+            Mang2Chieu m = new Mang2Chieu(arr);
+
+            // In mảng gốc
+            Console.WriteLine("Mảng ban đầu:");
+            m.Xuat();
+
+            // Tìm các số nguyên tố
+            int[] dsNguyenTo = m.LayDanhSachSoNguyenTo();
+
+            Console.WriteLine("\nCác số nguyên tố trong mảng:");
+            if (dsNguyenTo.Length == 0)
+                Console.WriteLine("(Không có số nguyên tố nào)");
+            else
+                Console.WriteLine(string.Join(", ", dsNguyenTo));
+        }
     }
 }

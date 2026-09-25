@@ -7,7 +7,7 @@ namespace Bai7
     public class PersonList
     {
         // Dùng List<Person> để lưu danh sách
-        private List<Person> danhSach;
+        public List<Person> danhSach;
 
         // Default constructor
         public PersonList()
@@ -15,7 +15,7 @@ namespace Bai7
             danhSach = new List<Person>();
         }
 
-        // Copy constructor: sao chép sâu (deep copy)
+        // Copy constructor
         public PersonList(PersonList other)
         {
             danhSach = new List<Person>();

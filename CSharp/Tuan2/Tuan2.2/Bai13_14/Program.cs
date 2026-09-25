@@ -1,5 +1,5 @@
 ﻿using System;
-using Bai12;
+
 
 public class SinhVien : IComparable<SinhVien> //yes this is not the java way of calling out an interface I know but this is kinda lit
 {
@@ -18,7 +18,7 @@ public class SinhVien : IComparable<SinhVien> //yes this is not the java way of 
 
     public SinhVien(SinhVien other) : this(other.MaSV, other.HoTen, other.DiemTB) { }
 
-    // So sánh mặc định
+    // So sánh ĐTB theo interface lớp
     public int CompareTo(SinhVien other)
     {
         if (other == null) return 1;
@@ -83,6 +83,35 @@ public static class MySort
         T tmp = a;
         a = b;
         b = tmp;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        SinhVien[] ds =
+        {
+            new SinhVien("SV03", "Nguyễn Văn C", 7.5),
+            new SinhVien("SV01", "Trần Thị B",   9.0),
+            new SinhVien("SV04", "Lê Văn D",     6.5),
+            new SinhVien("SV02", "Hoàng Thị A",  8.2),
+        };
+
+        Console.WriteLine("Danh sách ban đầu ");
+        foreach (var sv in ds) Console.WriteLine(sv);
+
+    
+        // Cách 2: truyền IComparer — theo tên
+        Array.Sort(ds, new SoSanhTheoTen());
+        Console.WriteLine("\n 3.1 (Alphabetical) ");
+        foreach (var sv in ds) Console.WriteLine(sv);
+
+
+        // Cách 4: dùng Comparison<T> delegate (lambda)
+        Array.Sort(ds, (a, b) => b.DiemTB.CompareTo(a.DiemTB));
+        Console.WriteLine("\n 3.2 ");
+        foreach (var sv in ds) Console.WriteLine(sv);
     }
 }
 
