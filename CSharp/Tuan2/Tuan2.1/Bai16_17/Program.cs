@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Text.Unicode;
+
 
 namespace Bai16_17
 {
     class Bai16
     {
-        public void GiaiBai16()
+        public void SolveBai16()
         {
             Console.Write("Nhập số lượng người (n): ");
             if (!int.TryParse(Console.ReadLine(), out int n) || n <= 0)
@@ -34,7 +36,7 @@ namespace Bai16_17
         }
         class Bai17
         {
-            public void GiaiBai17()
+            public void SolveBai17()
             {
                 Console.Write("Nhập số dòng n: ");
                 int n = int.Parse(Console.ReadLine());
@@ -55,7 +57,7 @@ namespace Bai16_17
                 Console.WriteLine("Mảng các số lẻ:");
                 Console.WriteLine(string.Join(", ", mangLe));
             }
-            public static int[,] SinhMangNgauNhien(int n, int m) //man this random library is stolen from AI I have no idea it existed :sob:
+            public static int[,] SinhMangNgauNhien(int n, int m) 
             {
                 int[,] matrix = new int[n, m];
                 Random rand = new Random();
@@ -104,6 +106,21 @@ namespace Bai16_17
 
                 mangChan = danhSachChan.ToArray();
                 mangLe = danhSachLe.ToArray();
+            }
+        }
+        class Program
+        {
+            public static void Main(String[] args)
+            {
+                Bai16 n= new Bai16();
+                Bai17 m= new Bai17();
+
+                n.SolveBai16();
+
+                Console.WriteLine(" ");
+
+                m.SolveBai17();
+            
             }
         }
     }

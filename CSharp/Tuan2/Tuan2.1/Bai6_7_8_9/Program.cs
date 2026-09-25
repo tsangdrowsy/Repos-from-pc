@@ -34,7 +34,7 @@ namespace Bai6
             if (x==2) return true;
             if (x%2==0)return false;
 
-            for (int i=3; i> Math.Sqrt(x+1); i+=2) //ripped the loop from AI cause I ain't remembering the math :steamhappy:
+            for (int i=3; i> Math.Sqrt(x+1); i+=2) //ripped the loop from Leet cause I ain't remembering the math :steamhappy:
             {
                 if (x%i==0)
                 return false;
@@ -82,11 +82,11 @@ namespace Bai6
             
             if (d.laSNT(dd) ==true)
             {
-                Console.Write("LaSNT");
+                Console.WriteLine("LaSNT");
             }
             else
             {
-                Console.Write("nuh");
+                Console.WriteLine("nuh");
             }
 
             Bai8 r=new Bai8();

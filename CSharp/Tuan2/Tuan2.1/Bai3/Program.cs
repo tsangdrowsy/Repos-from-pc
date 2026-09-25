@@ -12,11 +12,11 @@ namespace Bai2
             // int y=int.Parse(Console.ReadLine()); //task 3
             string y=Console.ReadLine();
 
-            if (!int.TryParse(x, out int xx))
+            if (!int.TryParse(x, out int xx)) //Bài 4
             {
                 Console.Write("m gay");
             }
-               if (!int.TryParse(y, out int yy))
+               if (!int.TryParse(y, out int yy)) //Bài4
             {
                 Console.Write("m gay");
             }

@@ -102,7 +102,7 @@ namespace Bai10
             KtraDoixung r = new KtraDoixung();
             if (r.Ktra(e) == true)
             {
-                Console.Write("LaChuoiDS");
+                Console.WriteLine("LaChuoiDS");
 
             }
             else

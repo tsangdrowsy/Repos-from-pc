@@ -1,6 +1,6 @@
 ﻿using System;
 
-// ============ Lớp cơ sở Thí sinh ============
+// Lớp cơ sở Thí sinh 
 public abstract class ThiSinh
 {
     public string Sbd { get; set; }

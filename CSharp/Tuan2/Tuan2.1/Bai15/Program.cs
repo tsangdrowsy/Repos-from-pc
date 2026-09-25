@@ -1,5 +1,7 @@
 ﻿using System;
 
+
+
 namespace Bai15
 {
     class Arrays
@@ -9,7 +11,7 @@ namespace Bai15
         public void NhapMang()
         {
             Console.Write("Dai nhieu?");
-            int n = int.Parse(Console.ReadLine());
+             n = int.Parse(Console.ReadLine());
             a = new int[n];
             for (int i = 0; i < n; i++)
             {
@@ -61,7 +63,7 @@ namespace Bai15
         }
         public static void Main()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+           
             Arrays obj = new Arrays();
 
             obj.NhapMang();
