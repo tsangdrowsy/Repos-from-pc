@@ -34,94 +34,96 @@ namespace Bai16_17
                 Console.WriteLine($"- {ten}");
             }
         }
-        class Bai17
+    }
+    class Bai17
+    {
+       
+        public static int[,] SinhMangNgauNhien(int n, int m)
         {
-            public void SolveBai17()
+            int[,] matrix = new int[n, m];
+            Random rand = new Random();
+
+            for (int i = 0; i < n; i++)
             {
-                Console.Write("Nhập số dòng n: ");
-                int n = int.Parse(Console.ReadLine());
-                Console.Write("Nhập số cột m: ");
-                int m = int.Parse(Console.ReadLine());
-
-                int[,] maTran = SinhMangNgauNhien(n, m);
-
-                Console.WriteLine("\nMảng 2 chiều vừa sinh ngẫu nhiên:");
-                InMangHaiChieu(maTran);
-
-                TachChanLe(maTran, out int[] mangChan, out int[] mangLe);
-
-                // In kết quả mảng chẵn, lẻ
-                Console.WriteLine("\nMảng các số chẵn:");
-                Console.WriteLine(string.Join(", ", mangChan));
-
-                Console.WriteLine("Mảng các số lẻ:");
-                Console.WriteLine(string.Join(", ", mangLe));
-            }
-            public static int[,] SinhMangNgauNhien(int n, int m) 
-            {
-                int[,] matrix = new int[n, m];
-                Random rand = new Random();
-
-                for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
                 {
-                    for (int j = 0; j < m; j++)
-                    {
-                        matrix[i, j] = rand.Next(10, 101); //Stolen from AI cause I HAVE NO CLUE HOW
-                    }
-                }
-                return matrix;
-            }
-
-            public void InMangHaiChieu(int[,] matrix)
-            {
-                int dong = matrix.GetLength(0);
-                int cot = matrix.GetLength(1);
-
-                for (int i = 0; i < dong; i++)
-                {
-                    for (int j = 0; j < cot; j++)
-                    {
-                        Console.Write($"{matrix[i, j]}\t"); //the normal array printing
-                    }
-                    Console.WriteLine();
+                    matrix[i, j] = rand.Next(10, 100); //Stolen from AI cause I HAVE NO CLUE HOW
                 }
             }
+            return matrix;
+        }
 
-            public void TachChanLe(int[,] matrix, out int[] mangChan, out int[] mangLe) //also int [,] is legit a matrix but short holy
+        public void InMangHaiChieu(int[,] matrix)
+        {
+            int dong = matrix.GetLength(0);
+            int cot = matrix.GetLength(1);
+
+            for (int i = 0; i < dong; i++)
             {
-                List<int> danhSachChan = new List<int>();
-                List<int> danhSachLe = new List<int>();
-
-                foreach (int phanTu in matrix)
+                for (int j = 0; j < cot; j++)
                 {
-                    if (phanTu % 2 == 0)
-                    {
-                        danhSachChan.Add(phanTu);
-                    }
-                    else
-                    {
-                        danhSachLe.Add(phanTu); //not hard at all
-                    }
+                    Console.Write($"{matrix[i, j]}\t"); //the normal array printing
                 }
-
-                mangChan = danhSachChan.ToArray();
-                mangLe = danhSachLe.ToArray();
+                Console.WriteLine();
             }
         }
-        class Program
+
+        public void TachChanLe(int[,] matrix, out int[] mangChan, out int[] mangLe) //also int [,] is legit a matrix but short holy
         {
-            public static void Main(String[] args)
+            List<int> danhSachChan = new List<int>();
+            List<int> danhSachLe = new List<int>();
+
+            foreach (int phanTu in matrix)
             {
-                Bai16 n= new Bai16();
-                Bai17 m= new Bai17();
-
-                n.SolveBai16();
-
-                Console.WriteLine(" ");
-
-                m.SolveBai17();
-            
+                if (phanTu % 2 == 0)
+                {
+                    danhSachChan.Add(phanTu);
+                }
+                else
+                {
+                    danhSachLe.Add(phanTu); //not hard at all
+                }
             }
+
+            mangChan = danhSachChan.ToArray();
+            mangLe = danhSachLe.ToArray();
+        }
+
+         public void SolveBai17()
+        {
+            Console.Write("Nhập số dòng n: ");
+            int n = int.Parse(Console.ReadLine());
+            Console.Write("Nhập số cột m: ");
+            int m = int.Parse(Console.ReadLine());
+
+            int[,] maTran = SinhMangNgauNhien(n, m);
+
+            Console.WriteLine("\nMảng 2 chiều vừa sinh ngẫu nhiên:");
+            InMangHaiChieu(maTran);
+
+            TachChanLe(maTran, out int[] mangChan, out int[] mangLe);
+
+            // In kết quả mảng chẵn, lẻ
+            Console.WriteLine("\nMảng các số chẵn:");
+            Console.WriteLine(string.Join(", ", mangChan));
+
+            Console.WriteLine("Mảng các số lẻ:");
+            Console.WriteLine(string.Join(", ", mangLe));
+        }
+    }
+    class Program
+    {
+        public static void Main(String[] args)
+        {
+            Bai16 n = new Bai16();
+            Bai17 m = new Bai17();
+
+            n.SolveBai16();
+
+            Console.WriteLine(" ");
+
+            m.SolveBai17();
+
         }
     }
 }
